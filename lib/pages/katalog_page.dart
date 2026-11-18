@@ -37,31 +37,32 @@ class KatalogPage extends StatefulWidget {
 }
 
 class _KatalogPageState extends State<KatalogPage> {
-  // Filter disimpan di ValueNotifier, bukan setState: halaman tidak dibangun ulang,
-  // hanya daftar yang dibungkus ValueListenableBuilder.
-  final ValueNotifier<_FilterMenu> _filter =
-      ValueNotifier<_FilterMenu>(const _FilterMenu());
+  // [SEBELUM OPTIMASI] Filter disimpan di variabel biasa + setState,
+  // sehingga SELURUH halaman dibangun ulang setiap kali mengetik/memilih kategori.
+  _FilterMenu _filter = const _FilterMenu();
   final TextEditingController _cariController = TextEditingController();
 
   @override
   void dispose() {
-    _filter.dispose();
     _cariController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final tampil = widget.menus.where(_filter.cocok).toList();
     return Column(
       children: [
-        // [BUTIR 5] & [BUTIR 6] Header const, tidak ikut rebuild saat filter berubah
-        const HeaderKatalog(),
+        // [SEBELUM OPTIMASI] Header tanpa const
+        HeaderKatalog(),
         Expanded(
-          child: ValueListenableBuilder<_FilterMenu>(
-            valueListenable: _filter,
-            builder: (context, filter, _) {
-              final tampil = widget.menus.where(filter.cocok).toList();
-              // [BUTIR 3] ListView.builder: indeks 0 = bagian intro, sisanya kartu menu
+          // [SEBELUM OPTIMASI] Satu listener untuk seluruh daftar: saat satu menu
+          // diubah statusnya, SEMUA kartu yang terlihat ikut dibangun ulang.
+          child: ListenableBuilder(
+            listenable: Listenable.merge(
+              widget.menus.map((m) => m.tersedia).toList(),
+            ),
+            builder: (context, _) {
               return ListView.builder(
                 padding: const EdgeInsets.fromLTRB(20, 4, 20, 28),
                 itemCount: tampil.isEmpty ? 2 : tampil.length + 1,
@@ -70,12 +71,12 @@ class _KatalogPageState extends State<KatalogPage> {
                     return _IntroKatalog(
                       key: const ValueKey('intro'),
                       controller: _cariController,
-                      filter: filter,
+                      filter: _filter,
                       jumlah: tampil.length,
                       onKueri: (v) =>
-                          _filter.value = _filter.value.denganKueri(v),
+                          setState(() => _filter = _filter.denganKueri(v)),
                       onKategori: (k) =>
-                          _filter.value = _filter.value.denganKategori(k),
+                          setState(() => _filter = _filter.denganKategori(k)),
                     );
                   }
                   if (tampil.isEmpty) return const _KosongKatalog();
@@ -107,7 +108,8 @@ class HeaderKatalog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    // [SEBELUM OPTIMASI] tanpa const
+    return Padding(
       padding: EdgeInsets.fromLTRB(20, 14, 20, 8),
       child: Row(
         children: [

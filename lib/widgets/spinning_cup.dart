@@ -33,19 +33,17 @@ class _SpinningCupState extends State<SpinningCup>
 
   @override
   Widget build(BuildContext context) {
-    // [BUTIR 5] RepaintBoundary mengisolasi area gambar ulang (repaint) dari seluruh halaman.
-    // AnimatedBuilder memakai parameter child agar widget Icon tidak dibangun ulang tiap frame.
-    return RepaintBoundary(
-      child: AnimatedBuilder(
-        animation: _controller,
-        child: const Icon(
+    // [SEBELUM OPTIMASI]
+    // - Tanpa RepaintBoundary: area repaint ikut meluas ke widget induknya.
+    // - AnimatedBuilder tanpa parameter child: Icon dibuat ulang di setiap frame.
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, _) => Transform.rotate(
+        angle: _controller.value * 2 * math.pi,
+        child: Icon(
           Icons.local_cafe,
           size: 26,
           color: kWarnaPutihKrem,
-        ),
-        builder: (context, child) => Transform.rotate(
-          angle: _controller.value * 2 * math.pi,
-          child: child,
         ),
       ),
     );
