@@ -17,7 +17,7 @@ class MenuCard extends StatelessWidget {
   final VoidCallback onTap;
   final VoidCallback onLongPress;
 
-  // [BUTIR 6] Constructor const pada widget
+  // Constructor const pada widget
   const MenuCard({
     super.key,
     required this.nama,
@@ -32,7 +32,7 @@ class MenuCard extends StatelessWidget {
     required this.onLongPress,
   });
 
-  // [BUTIR 1] & [BUTIR 6] Satu BoxDecoration static const memuat sekaligus:
+  // Satu BoxDecoration static const memuat sekaligus:
   // LinearGradient, borderRadius 20, border, dan boxShadow.
   static const BoxDecoration _dekorasiKartu = BoxDecoration(
     gradient: LinearGradient(
@@ -53,7 +53,7 @@ class MenuCard extends StatelessWidget {
     ],
   );
 
-  // [BUTIR 1] Dekorasi lingkaran ikon memakai BoxShape.circle (tanpa borderRadius)
+  // Dekorasi lingkaran ikon memakai BoxShape.circle (tanpa borderRadius)
   static const BoxDecoration _dekorasiLingkaranIkon = BoxDecoration(
     shape: BoxShape.circle,
     gradient: kGradienIkon,
@@ -63,14 +63,14 @@ class MenuCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // [BUTIR 2] AnimatedOpacity: transparansi 0.4 selama 400 ms jika habis.
+        // AnimatedOpacity: transparansi 0.4 selama 400 ms jika habis.
         // Pada nilai 1.0 Flutter tidak membuat layer offscreen (saveLayer),
         // sehingga kartu yang tersedia tetap murah untuk digambar.
         AnimatedOpacity(
           opacity: tersedia ? kOpacityTersedia : kOpacityHabis,
           duration: kDurasiFade,
           curve: Curves.easeInOut,
-          // [BUTIR 1] Container terluar dengan tepat satu BoxDecoration
+          // Container terluar dengan tepat satu BoxDecoration
           child: Container(
             decoration: _dekorasiKartu,
             child: Material(
@@ -85,11 +85,11 @@ class MenuCard extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(14, 14, 6, 14),
                   child: Row(
                     children: [
-                      // [BUTIR 4] RadialHero membungkus lingkaran ikon pada kartu
+                      // RadialHero membungkus lingkaran ikon pada kartu
                       RadialHero(
                         tag: heroTag,
                         ikon: ikon,
-                        // [BUTIR 1] Ikon berada di dalam lingkaran
+                        // Ikon berada di dalam lingkaran
                         child: Container(
                           width: kUkuranLingkaranIkon,
                           height: kUkuranLingkaranIkon,
@@ -164,7 +164,7 @@ class MenuCard extends StatelessWidget {
             ),
           ),
         ),
-        // [BUTIR 2] Label "Habis" berada di luar AnimatedOpacity agar tetap terbaca jelas
+        // Label "Habis" berada di luar AnimatedOpacity agar tetap terbaca jelas
         Positioned(
           top: 0,
           right: 22,

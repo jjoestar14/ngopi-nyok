@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// [BUTIR 6] Semua warna, durasi, dan ukuran disimpan sebagai konstanta (const).
+// Semua warna, durasi, dan ukuran disimpan sebagai konstanta (const).
 // Memakai literal Color(0xAARRGGBB) tanpa Color.withOpacity (tidak dihitung ulang saat runtime).
 
 // Palet bertema kopi (espresso, krem, karamel)

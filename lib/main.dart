@@ -8,7 +8,7 @@ void main() {
 
 /// Widget akar aplikasi Katalog Menu.
 class KatalogMenuApp extends StatelessWidget {
-  // [BUTIR 6] Penggunaan const pada widget utama
+  // Penggunaan const pada widget utama
   const KatalogMenuApp({super.key});
 
   @override

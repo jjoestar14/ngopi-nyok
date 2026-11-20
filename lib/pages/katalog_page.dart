@@ -98,7 +98,7 @@ class _KatalogPageState extends State<KatalogPage> {
 
 /// Header: nama kedai di kiri dan ikon cangkir berputar di kanan.
 class HeaderKatalog extends StatelessWidget {
-  // [BUTIR 6] Widget header menggunakan const constructor
+  // Widget header menggunakan const constructor
   const HeaderKatalog({super.key});
 
   static const BoxDecoration _dekorasiCangkir = BoxDecoration(
@@ -138,7 +138,7 @@ class HeaderKatalog extends StatelessWidget {
             ],
           ),
           Spacer(),
-          // [BUTIR 5] Ikon cangkir berputar di header
+          // Ikon cangkir berputar di header
           DecoratedBox(
             decoration: _dekorasiCangkir,
             child: Padding(

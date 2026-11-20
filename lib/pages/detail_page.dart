@@ -64,7 +64,7 @@ class DetailPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // [BUTIR 4] Target akhir RadialHero: persegi besar (rasio 1:1)
+                    // Target akhir RadialHero: persegi besar (rasio 1:1)
                     // dengan ClipRRect berradius akhir kRadiusPersegi.
                     Center(
                       child: ConstrainedBox(
