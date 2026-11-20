@@ -16,7 +16,7 @@ class RadialHero extends StatelessWidget {
     required this.child,
   });
 
-  // [BUTIR 4] Lintasan gerak melengkung menggunakan MaterialRectCenterArcTween
+  // Lintasan gerak melengkung menggunakan MaterialRectCenterArcTween
   static RectTween _buatRectTween(Rect? begin, Rect? end) {
     return MaterialRectCenterArcTween(begin: begin, end: end);
   }
@@ -26,7 +26,7 @@ class RadialHero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // [BUTIR 4] Hero dengan createRectTween dan flightShuttleBuilder
+    // Hero dengan createRectTween dan flightShuttleBuilder
     return Hero(
       tag: tag,
       createRectTween: _buatRectTween,
@@ -45,7 +45,7 @@ class RadialHero extends StatelessWidget {
                 // t bergerak 0.0 -> 1.0 saat push, dan 1.0 -> 0.0 saat pop
                 final double t = animation.value;
                 final double sisi = constraints.biggest.shortestSide;
-                // [BUTIR 4] Radius ClipRRect diinterpolasi: lingkaran (sisi/2) -> persegi (kRadiusPersegi)
+                // Radius ClipRRect diinterpolasi: lingkaran (sisi/2) -> persegi (kRadiusPersegi)
                 final double radius = lerpDouble(sisi / 2, kRadiusPersegi, t)!;
                 final double ukuranIkon = lerpDouble(
                   kUkuranIkonKecil,

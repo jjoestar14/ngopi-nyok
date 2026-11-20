@@ -12,7 +12,7 @@ class ItemMenu extends StatelessWidget {
 
   const ItemMenu({super.key, required this.item, required this.heroTag});
 
-  // [BUTIR 4] Navigasi memakai PageRouteBuilder dengan durasi 600 ms (kDurasiHero)
+  // Navigasi memakai PageRouteBuilder dengan durasi 600 ms (kDurasiHero)
   void _bukaDetail(BuildContext context) {
     Navigator.push(
       context,
@@ -27,7 +27,7 @@ class ItemMenu extends StatelessWidget {
     );
   }
 
-  // [BUTIR 2] Tekan lama: ubah status tersedia, lalu beri umpan balik lewat SnackBar.
+  // Tekan lama: ubah status tersedia, lalu beri umpan balik lewat SnackBar.
   void _ubahKetersediaan(BuildContext context) {
     final bool baru = !item.tersedia.value;
     item.tersedia.value = baru;

@@ -17,7 +17,7 @@ class _SpinningCupState extends State<SpinningCup>
   @override
   void initState() {
     super.initState();
-    // [BUTIR 5] AnimationController berputar berulang tanpa henti (repeat)
+    // AnimationController berputar berulang tanpa henti (repeat)
     _controller = AnimationController(
       vsync: this,
       duration: kDurasiPutarCangkir,
@@ -26,14 +26,14 @@ class _SpinningCupState extends State<SpinningCup>
 
   @override
   void dispose() {
-    // [BUTIR 5] Membuang controller sebelum super.dispose() untuk mencegah kebocoran memori
+    // Membuang controller sebelum super.dispose() untuk mencegah kebocoran memori
     _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // [BUTIR 5] RepaintBoundary mengisolasi area gambar ulang (repaint) dari seluruh halaman.
+    // RepaintBoundary mengisolasi area gambar ulang (repaint) dari seluruh halaman.
     // AnimatedBuilder memakai parameter child agar widget Icon tidak dibangun ulang tiap frame.
     return RepaintBoundary(
       child: AnimatedBuilder(

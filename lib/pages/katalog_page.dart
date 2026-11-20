@@ -54,14 +54,14 @@ class _KatalogPageState extends State<KatalogPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // [BUTIR 5] & [BUTIR 6] Header const, tidak ikut rebuild saat filter berubah
+        // Header const, tidak ikut rebuild saat filter berubah
         const HeaderKatalog(),
         Expanded(
           child: ValueListenableBuilder<_FilterMenu>(
             valueListenable: _filter,
             builder: (context, filter, _) {
               final tampil = widget.menus.where(filter.cocok).toList();
-              // [BUTIR 3] ListView.builder: indeks 0 = bagian intro, sisanya kartu menu
+              // ListView.builder: indeks 0 = bagian intro, sisanya kartu menu
               return ListView.builder(
                 padding: const EdgeInsets.fromLTRB(20, 4, 20, 28),
                 itemCount: tampil.isEmpty ? 2 : tampil.length + 1,
@@ -97,7 +97,7 @@ class _KatalogPageState extends State<KatalogPage> {
 
 /// Header: nama kedai di kiri dan ikon cangkir berputar di kanan.
 class HeaderKatalog extends StatelessWidget {
-  // [BUTIR 6] Widget header menggunakan const constructor
+  // Widget header menggunakan const constructor
   const HeaderKatalog({super.key});
 
   static const BoxDecoration _dekorasiCangkir = BoxDecoration(
@@ -136,7 +136,7 @@ class HeaderKatalog extends StatelessWidget {
             ],
           ),
           Spacer(),
-          // [BUTIR 5] Ikon cangkir berputar di header
+          // Ikon cangkir berputar di header
           DecoratedBox(
             decoration: _dekorasiCangkir,
             child: Padding(

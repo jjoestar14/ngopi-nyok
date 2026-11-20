@@ -54,7 +54,7 @@ class FavoritPage extends StatelessWidget {
             Expanded(
               child: daftar.isEmpty
                   ? _KosongFavorit(onJelajahi: onJelajahi)
-                  // [BUTIR 3] Daftar favorit juga memakai ListView.builder
+                  // Daftar favorit juga memakai ListView.builder
                   : ListView.builder(
                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 28),
                       itemCount: daftar.length,
