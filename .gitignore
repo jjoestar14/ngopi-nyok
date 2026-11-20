@@ -65,3 +65,11 @@ app.*.map.json
 # Xcode user-specific files
 *.xcuserstate
 **/xcuserdata/
+
+# Generated platform folders
+/android/
+/ios/
+/linux/
+/macos/
+/web/
+/windows/
