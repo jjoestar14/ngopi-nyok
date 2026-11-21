@@ -63,9 +63,6 @@ class MenuCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // AnimatedOpacity: transparansi 0.4 selama 400 ms jika habis.
-        // Pada nilai 1.0 Flutter tidak membuat layer offscreen (saveLayer),
-        // sehingga kartu yang tersedia tetap murah untuk digambar.
         AnimatedOpacity(
           opacity: tersedia ? kOpacityTersedia : kOpacityHabis,
           duration: kDurasiFade,
